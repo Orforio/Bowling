@@ -26,16 +26,16 @@ class Player {
 		return $this->scores;
 	}
 	
-	// addScore(): takes arguments $ball1 and $ball2 corresponding to the two balls in a frame and adds those scores to the player's $scores array
-	public function addScore($ball1, $ball2) {
-		$this->scores[] = array("ball1" => $ball1, "ball2" => $ball2, "total" => 0);	// The third value is the frame's total score, calculated by the Game class
+	// addScore(): takes arguments $frame, $ball1 and $ball2 corresponding to the two balls in a given frame and adds those scores to the player's $scores array
+	public function addScore($frame, $ball1, $ball2) {
+		$this->scores[$frame] = array("ball1" => $ball1, "ball2" => $ball2, "total" => 0);	// The third value is the frame's total score, calculated by the Game class
 		// TESTING // echo "Here's how my scores look now: " . print_r($this->scores) . "\n";
 	}
 	
 	// addTally(): takes arguments $frame and $total corresponding to the frame to add the total score to
 	public function addTally($frame, $total) {
-		$this->scores[$frame-1]["total"] = $total;
-		// TESTING // echo "Just added tally: " . $this->scores[$frame-1]["total"] . "\n";
+		$this->scores[$frame]["total"] = $total;
+		// TESTING // echo "Just added tally: " . $this->scores[$frame]["total"] . "\n";
 	}
 }
 ?>
