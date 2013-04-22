@@ -22,7 +22,14 @@ class Game {
 
 		for ($i=1; $i <= $this->numberPlayers; $i++) {
 			echo "Player " . $i . ": please enter your name." . "\n";
-			$this->players[$i] = new Player($this->cli->getUserInput());
+			
+			$playerName = $this->cli->getUserInput();
+			
+			if ($playerName == "") {	// If player doesn't type in a name, use "Player X" instead
+				$playerName = "Player " . $i;
+			}
+			
+			$this->players[$i] = new Player($playerName);
 		}
 		
 		echo "Thank you. GET READY TO BOWL!" . "\n";
@@ -166,7 +173,7 @@ class Game {
 		}
 		else{
 			echo "--== SCORES as of frame " . $currentFrame . " ==--" . "\n";
-			echo "Scores for the current frame are not calculated." ."\n";
+			echo "Scores for the current frame are not shown until all players have finished their turn." ."\n";
 		}
 		echo "\n";
 		
